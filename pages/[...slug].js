@@ -32,7 +32,7 @@ export const getStaticPaths = async () => {
       .filter((page) => page.uri !== "/")
       .map((page) => ({
         params: {
-          slug: page.uri.substring(1, page.uri.lenght - 1).split("/"),
+          slug: page.uri.substring(1, page.uri.length - 1).split("/"),
         },
       })),
     fallback: "blocking",
