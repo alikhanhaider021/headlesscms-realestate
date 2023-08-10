@@ -12,10 +12,18 @@ export const getPageStaticProps = async (context) => {
           ... on Page {
             id
             blocks
+            seo {
+              title
+              metaDesc
+            }
           }
           ... on Property {
             id
             blocks
+            seo {
+              title
+              metaDesc
+            }
           }
         }
         acfOptionsMainMenu {
@@ -55,6 +63,7 @@ export const getPageStaticProps = async (context) => {
 
   return {
     props: {
+      seo: data.nodeByUri.seo,
       callToActionLabel:
         data.acfOptionsMainMenu.mainMenu.callToActionButton.label,
       callToActionDestination:

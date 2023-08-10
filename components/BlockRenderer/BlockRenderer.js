@@ -5,12 +5,34 @@ import { CallToActionButton } from "components/CallToActionButton";
 import { Column } from "components/Column";
 import { Columns } from "components/Columns";
 import { PropertySearch } from "components/PropertySearch";
+import { FormspreeForm } from "components/FormspreeForm";
+import { PropertyFeatures } from "components/PropertyFeatures";
 import { theme } from "theme";
 import Image from "next/image";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/propertyfeatures": {
+        return (
+          <PropertyFeatures
+            key={block.id}
+            price={block.attributes.price}
+            bathrooms={block.attributes.bathrooms}
+            bedrooms={block.attributes.bedrooms}
+            hasParking={block.attributes.has_parking}
+            petFriendly={block.attributes.pet_friendly}
+          />
+        );
+      }
+      case "acf/formspreeform": {
+        return (
+          <FormspreeForm
+            key={block.id}
+            formId={block.attributes.data.form_id}
+          />
+        );
+      }
       case "acf/propertysearch": {
         return <PropertySearch key={block.id} />;
       }
